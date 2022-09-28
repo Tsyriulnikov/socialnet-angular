@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ProfileResponse, ProfileService} from "../../services/profile.service";
 import {Observable} from "rxjs";
 
@@ -10,7 +10,9 @@ import {Observable} from "rxjs";
 })
 export class ProfileComponent implements OnInit {
 profile$!: Observable<ProfileResponse>
-  constructor(private route: ActivatedRoute, private profileService: ProfileService) {
+  constructor(private route: ActivatedRoute,
+              private profileService: ProfileService,
+              private router:Router) {
   }
 
   ngOnInit(): void {
@@ -19,5 +21,7 @@ profile$!: Observable<ProfileResponse>
      this.profile$ = this.profileService.getProfile(userId)
    }
    }
-
+backToUserHandler(){
+this.router.navigate(['/users'])
+}
 }
