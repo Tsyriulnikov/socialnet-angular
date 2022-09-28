@@ -2,5 +2,7 @@
 <div *ngIf="profile$ | async let profile">
   <b>{{profile.fullName}}</b>
 </div>
-<button (click)="backToUserHandler()" ></button>
+<button (click)="backToUserHandler()">Back to users</button>
+<button [routerLink]="['/users']">Back to users 2</button>
+<div [routerLink]="['/users']">Back to users 3</div>
 
