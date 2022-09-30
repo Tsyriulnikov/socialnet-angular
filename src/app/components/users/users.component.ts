@@ -20,7 +20,7 @@ export class UsersComponent implements OnInit {
 
 
   ngOnInit(): void {
-    const page=Number(this.route.snapshot.queryParamMap.get('page'))
+    const page = Number(this.route.snapshot.queryParamMap.get('page'))
     const currentPage = page ? page : 1
     this.getUsers(currentPage)
   }
@@ -31,9 +31,18 @@ export class UsersComponent implements OnInit {
 
   nextUserHandler() {
     const page = Number(this.route.snapshot.queryParamMap.get('page'))
-    const nextPage = page ? page + 1 :2
-    this.router
-      .navigateByUrl(`/users?page=${nextPage}`).then(() => this.getUsers(nextPage))
-
+    const nextPage = page ? page + 1 : 2
+// 1 variant
+    // this.router
+    //   .navigateByUrl(`/users?page=${nextPage}`).then(() => this.getUsers(nextPage))
+// 2 variant
+    this.router.navigate(['/users'], {
+      queryParams: {
+        page: nextPage,
+      },
+    })
+      .then(() => {
+        this.getUsers(nextPage)
+      })
   }
 }
