@@ -3,3 +3,4 @@
   {{user.id}} -  <a [routerLink]="['/profile',user.id]" >{{user.name}}</a>
 </div>
 <button (click)="nextUserHandler()">Next</button>
+<button [routerLink]="['/users']" [queryParams]="{page:1}" >Page #1</button>
