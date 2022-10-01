@@ -28,6 +28,7 @@ export class UsersService {
 
   getUsers(page:number):Observable<User[]> {
     return this.http
-
+      .get<UsersResponse>(`${environment.baseNetworkUrl}/users?page=${page}`)
+      .pipe(map(el=>el.items))
   }
 }
