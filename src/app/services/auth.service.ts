@@ -14,15 +14,25 @@ interface MeResponse {
   resultCode: number
 }
 
+enum ResultCode {
+  success = 0,
+  error = 1,
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  isAuth = false
 
-
-  constructor(private http:HttpClient) {
+  constructor(private http: HttpClient) {
   }
-  getUsers(page:number):Observable<MeResponse>{
-    return  this.http.get<MeResponse>(`${environment.baseNetworkUrl}/auth/me`)
+
+  me() {
+    return this.http.get<MeResponse>(`${environment.baseNetworkUrl}/auth/me`).subscribe((res) => {
+      if (res.resultCode === ResultCode.success) {
+        this.isAuth = true
+      }
+    })
   }
 }
