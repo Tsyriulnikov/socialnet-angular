@@ -11,6 +11,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { NavigationComponent } from './components/navigation/navigation.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CridentialsInterceptor} from "./interceptors/cridentials.interceptor";
+import { TodosComponent } from './components/todos/todos.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {CridentialsInterceptor} from "./interceptors/cridentials.interceptor";
     ProfileComponent,
     UsersComponent,
     PageNotFoundComponent,
-    NavigationComponent
+    NavigationComponent,
+    TodosComponent
   ],
   imports: [
     BrowserModule,
